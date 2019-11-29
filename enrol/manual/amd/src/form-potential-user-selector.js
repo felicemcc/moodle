@@ -67,7 +67,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/str'], function($, Ajax, 
                     search: query,
                     searchanywhere: true,
                     page: 0,
-                    perpage: perpage + 1
+                    perpage: parseInt(perpage) + 1
                 }
             }]);
 
@@ -75,7 +75,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/str'], function($, Ajax, 
                 var promises = [],
                     i = 0;
 
-                if (results.length <= perpage) {
+                if (results.length <= parseInt(perpage)) {
                     // Render the label.
                     $.each(results, function(index, user) {
                         var ctx = user,
