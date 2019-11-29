@@ -54,8 +54,8 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/str'], function($, Ajax, 
             if (typeof enrolid === "undefined") {
                 enrolid = '';
             }
-            var perpage = $(selector).attr('perpage');
-            if (typeof perpage === "undefined") {
+            var perpage = parseInt($(selector).attr('perpage'));
+            if (isNaN(perpage)) {
                 perpage = 100;
             }
 
@@ -75,7 +75,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/str'], function($, Ajax, 
                 var promises = [],
                     i = 0;
 
-                if (results.length <= perpage) {
+                if (results.length <= parseInt(perpage)) {
                     // Render the label.
                     $.each(results, function(index, user) {
                         var ctx = user,
